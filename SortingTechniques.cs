@@ -25,11 +25,6 @@ namespace DSA
 
                 SortingTechniques.Swap(arr, min, i);
             }
-
-            foreach (int i in arr)
-            {
-                Console.Write(i + " ");
-            }
         }
 
         public static void BubbleSort(int[] arr)
@@ -54,11 +49,6 @@ namespace DSA
                     break;
                 }
             }
-
-            foreach (int i in arr)
-            {
-                Console.Write(i + " ");
-            }
         }
 
         public static void InsertionSort(int[] arr)
@@ -74,10 +64,59 @@ namespace DSA
                     j--;
                 }
             }
+        }
 
-            foreach (int i in arr)
+        public static void MergeSort(int[] arr, int low, int high)
+        {
+            if (low >= high)
             {
-                Console.Write(i + " ");
+                return;
+            }
+
+            int mid = (low + high) / 2;
+
+            SortingTechniques.MergeSort(arr, 0, mid);
+            SortingTechniques.MergeSort(arr, mid + 1, high);
+
+            SortingTechniques.MergeArray(arr, low, mid, high);
+        }
+
+        public static void MergeArray(int[] arr, int low, int mid, int high)
+        {
+            int left = low;
+            int right = mid + 1;
+
+            List<int> list = new List<int>();
+
+            while (left <= mid && right <= high)
+            {
+                if (arr[left] < arr[right])
+                {
+                    list.Add(arr[left]);
+                    left++;
+                }
+                else
+                {
+                    list.Add(arr[right]);
+                    right++;
+                }
+            }
+
+            while (left <= mid)
+            {
+                list.Add(arr[left]);
+                left++;
+            }
+
+            while (right <= high)
+            {
+                list.Add(arr[right]);
+                right++;
+            }
+
+            for (int i = low; i <= high; i++)
+            {
+                arr[i] = list[i - low];
             }
         }
 
