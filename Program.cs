@@ -10,7 +10,8 @@ namespace MyApp
             int[] arr = { 5, 8, 32, 14, 1, 78, 40 };
 
             //SortingTechniques.SelectionSort(arr);
-            SortingTechniques.BubbleSort(arr);
+            //SortingTechniques.BubbleSort(arr);
+            SortingTechniques.InsertionSort(arr);
         }
 
 
